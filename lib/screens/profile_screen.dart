@@ -79,7 +79,58 @@ class ProfileScreen extends StatelessWidget {
             ],
           ),
           Gap(AppLayout.getHeight(8)),
-          const Divider(color: Colors.grey,)
+          const Divider(color: Colors.grey,),
+          Gap(AppLayout.getHeight(8)),
+          Stack(
+            children: [
+              Container(
+                height: AppLayout.getHeight(90),
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: Styles.primaryColor,
+                  borderRadius: BorderRadius.circular(AppLayout.getHeight(18)),
+                ),
+              ),
+              Positioned(
+                right: -45,
+                top: -40,
+                child: Container(
+                  padding: EdgeInsets.all(AppLayout.getHeight(30)),
+                  decoration: BoxDecoration(
+                    color: Colors.transparent,
+                    shape: BoxShape.circle,
+                    border: Border.all(width: 18, color: const Color(0xFF264CD2)), 
+                  ),
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: AppLayout.getHeight(25), vertical: AppLayout.getHeight(18)),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    CircleAvatar(
+                      maxRadius: AppLayout.getHeight(25),
+                      backgroundColor: Colors.white,
+                      child: Icon(FluentSystemIcons.ic_fluent_lightbulb_filament_filled,
+                      color: Styles.primaryColor, size: AppLayout.getHeight(27),
+                      ),
+                    ),
+                    Gap(AppLayout.getHeight(12)),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text("You\'v got a new Award", style: Styles.headLineStyle2.copyWith(fontWeight: FontWeight.bold,color: Colors.white),),
+                        Text("You have 95 Flights in a Year", style: Styles.headLineStyle3.copyWith(fontWeight: FontWeight.w500,color: Colors.white.withOpacity(0.9), fontSize: AppLayout.getHeight(16)),),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+          Gap(AppLayout.getHeight(25)),
+          Text("Accumulated miles", style: Styles.headLineStyle2,)
         ],
       ),
     );

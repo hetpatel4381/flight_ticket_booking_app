@@ -1,5 +1,6 @@
 import 'package:book_tickets/utils/app_layout.dart';
 import 'package:book_tickets/widgets/column_layout.dart';
+import 'package:book_tickets/widgets/layout_builder_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
@@ -54,28 +55,7 @@ class TicketView extends StatelessWidget {
                         children: [
                           SizedBox(
                             height: AppLayout.getHeight(24),
-                            child: LayoutBuilder(
-                              builder: (BuildContext context,
-                                  BoxConstraints constraints) {
-                                return Flex(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    direction: Axis.horizontal,
-                                    children: List.generate(
-                                        (constraints.constrainWidth() / 6)
-                                            .floor(),
-                                        (index) => SizedBox(
-                                              width: 3,
-                                              height: 1,
-                                              child: DecoratedBox(
-                                                decoration: BoxDecoration(
-                                                    color: isColor == null
-                                                        ? Colors.white
-                                                        : Colors.grey.shade400),
-                                              ),
-                                            )));
-                              },
-                            ),
+                            child: const AppLayoutBuilderWidget(sections: 6),
                           ),
                           Center(
                             child: Transform.rotate(
@@ -222,19 +202,19 @@ class TicketView extends StatelessWidget {
                         firstText: ticket['date'],
                         secondText: "Date",
                         alignment: CrossAxisAlignment.start,
-                        isColor: false,
+                        isColor: isColor,
                       ),
                       ColumnLayout(
                         firstText: ticket['departure_time'],
                         secondText: "Departure Time",
                         alignment: CrossAxisAlignment.center,
-                        isColor: false,
+                        isColor: isColor,
                       ),
                       ColumnLayout(
                         firstText: ticket['number'].toString(),
                         secondText: "Number",
                         alignment: CrossAxisAlignment.start,
-                        isColor: false,
+                        isColor: isColor,
                       ),
                     ],
                   ),

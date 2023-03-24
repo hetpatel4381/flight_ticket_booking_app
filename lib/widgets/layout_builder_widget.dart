@@ -4,7 +4,10 @@ import 'package:flutter/src/widgets/placeholder.dart';
 
 class AppLayoutBuilderWidget extends StatelessWidget {
   final bool? isColor;
-  const AppLayoutBuilderWidget({super.key, this.isColor});
+  final int sections;
+  final double width;
+  const AppLayoutBuilderWidget(
+      {super.key, required this.sections, this.width = 3, this.isColor});
 
   @override
   Widget build(BuildContext context) {
@@ -14,9 +17,9 @@ class AppLayoutBuilderWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             direction: Axis.horizontal,
             children: List.generate(
-                (constraints.constrainWidth() / 6).floor(),
+                (constraints.constrainWidth() / sections).floor(),
                 (index) => SizedBox(
-                      width: 3,
+                      width: width,
                       height: 1,
                       child: DecoratedBox(
                         decoration: BoxDecoration(
